@@ -1,30 +1,29 @@
 import static java.lang.Character.getNumericValue;
 
 public class ChessKnight {
+    private static String possiblePositions;
 
     public static String getKnightMoves(String position) {
         char column = position.charAt(0);
         int row = getNumericValue(position.charAt(1));
-        String possiblePositions = "";
+        possiblePositions = "";
 
-        possiblePositions += checkPosition((char) (column - 2), row - 1);
-        possiblePositions += checkPosition((char) (column - 2), row + 1);
-        possiblePositions += checkPosition((char) (column - 1), row - 2);
-        possiblePositions += checkPosition((char) (column - 1), row + 2);
-        possiblePositions += checkPosition((char) (column + 1), row - 2);
-        possiblePositions += checkPosition((char) (column + 1), row + 2);
-        possiblePositions += checkPosition((char) (column + 2), row - 1);
-        possiblePositions += checkPosition((char) (column + 2), row + 1);
+       checkPosition((char) (column - 2), row - 1);
+       checkPosition((char) (column - 2), row + 1);
+       checkPosition((char) (column - 1), row - 2);
+       checkPosition((char) (column - 1), row + 2);
+       checkPosition((char) (column + 1), row - 2);
+       checkPosition((char) (column + 1), row + 2);
+       checkPosition((char) (column + 2), row - 1);
+       checkPosition((char) (column + 2), row + 1);
 
         return possiblePositions.toLowerCase();
     }
 
-    private static String checkPosition(char column, int row) {
-        String possiblePosition = "";
+    private static void checkPosition(char column, int row) {
         if (1 <= row && row <= 8 && 'A' <= column && column <= 'H' || 'a' <= column && column <= 'h') {
-            possiblePosition += column + Integer.toString(row) + " ";
+            possiblePositions += column + Integer.toString(row) + " ";
         }
-        return possiblePosition;
     }
 
     public static void main(String[] args) {
